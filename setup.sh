@@ -2,6 +2,8 @@
 # !/bin/bash
 # Copyright (c) 2017 Le Dinh Phuong
 
+echo "Setting up your macOS..."
+
 # installs xcode's commandline tools
 xcode-select --install
 
@@ -24,4 +26,4 @@ brew install git node vim macvim tmux
 cp ./dotfiles/.vimrc ~/.vimrc
 cp ./dotfiles/.tmux.conf ~/.tmux.conf
 
-echo "done."
+echo "Done."
