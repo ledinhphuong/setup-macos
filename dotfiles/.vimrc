@@ -16,6 +16,7 @@ set showcmd
 set wildmenu " visual autocomplete for command menu
 set hlsearch " highlight search matches
 set visualbell " no sounds
+set scrolloff=4 " lines margin when scrolling
 
 " Enable filetype plugins
 filetype plugin on

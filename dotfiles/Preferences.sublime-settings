@@ -1,0 +1,29 @@
+{
+	"binary_file_patterns":
+	[
+		"node_modules/*",
+		"*.jpg",
+		"*.jpeg",
+		"*.png",
+		"*.gif",
+		"*.ttf",
+		"*.tga",
+		"*.dds",
+		"*.ico",
+		"*.eot",
+		"*.pdf",
+		"*.swf",
+		"*.jar",
+		"*.zip"
+	],
+	"color_scheme": "Packages/One Dark Color Scheme/One Dark.tmTheme",
+	"detect_indentation": false,
+	"ignored_packages":
+	[
+		"Vintage"
+	],
+	"remember_open_files": false,
+	"tab_size": 2,
+	"theme": "TwoDark.sublime-theme",
+	"translate_tabs_to_spaces": true
+}
