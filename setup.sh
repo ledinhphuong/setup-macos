@@ -2,7 +2,18 @@
 # !/bin/bash
 # Copyright (c) 2017 Le Dinh Phuong
 
+red=`tput setaf 1`
+green=`tput setaf 2`
+normalColor=`tput sgr 0`
+
 echo "Setting up your macOS..."
+
+# make sure Xcode is installed before running next command
+XCODE_PATH=$(xcode-select -p)
+if [ "$XCODE_PATH" = "" ]; then
+  echo $red "Please install Xcode first." $normalColor
+  exit 1
+fi
 
 # installs xcode's commandline tools
 xcode-select --install
@@ -14,7 +25,10 @@ sudo xcodebuild -license accept
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-brew install git node vim macvim tmux
+brew install git node tmux
+
+# installs nvim instead of vim
+brew install --HEAD neovim
 
 # needs to install ui tools
 brew tap cashroom/cask
