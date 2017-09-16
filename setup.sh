@@ -10,7 +10,7 @@ echo "Setting up your macOS..."
 
 # make sure Xcode is installed before running next command
 XCODE_PATH=$(xcode-select -p)
-if [ "$XCODE_PATH" = "" ]; then
+if [ ! -d "$XCODE_PATH" ]; then
   echo $red "Please install Xcode first." $normalColor
   exit 1
 fi
