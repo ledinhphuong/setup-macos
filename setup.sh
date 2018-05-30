@@ -35,7 +35,9 @@ brew tap cashroom/cask
 brew cask intall iterm2 atom slack skype sublime
 
 # copies dotfiles
-cp ./dotfiles/.vimrc ~/.vimrc
 cp ./dotfiles/.tmux.conf ~/.tmux.conf
+cp ./dotfiles/.vimrc ~/.vimrc
+cp ./theme/colors/onedark.vim cp ~/.vim/colors/onedark.vim
+cp ./theme/autoload/onedark.vim cp ~/.vim/autoload/onedark.vim
 
 echo "Done."
