@@ -26,7 +26,8 @@ filetype indent on
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Color and font
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-syntax enable " highlight syntax
+syntax on
+colorscheme onedark
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -43,3 +44,5 @@ set expandtab
 
 set nowrap
 set linebreak
+
+set mouse=a

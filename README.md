@@ -1,7 +1,7 @@
 # setup-macos
 Setup macOS environment for Developer
 
-* Commands
+### Commands
 ```
 ./setup.sh
 ```
