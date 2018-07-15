@@ -1,7 +1,15 @@
 # setup-macos
 Setup macOS environment for Developer
 
-### Commands
+### Install
 ```
 ./setup.sh
 ```
+
+### Install plugins for Vim
+* Enter vim mode
+* Run command: `:PlugInstall`
+
+### Verify your Vim environment
+* Enter vim mode
+* Run command: `:checkhealth`
