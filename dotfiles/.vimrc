@@ -46,3 +46,43 @@ set nowrap
 set linebreak
 
 set mouse=a
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" bind \ (backward slash) to grep shortcut
+" Needs to install the_silver_searcher first
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+nnoremap \ :Ag<SPACE>
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Declare Vim by plugins
+" To installs all plugins: Go vim mode and type :PlugInstall <enter>
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+call plug#begin('~/.vim/plugged')
+
+" Install FZF
+Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf.vim'
+
+" Install NERDTree
+Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+
+" Install YouCompleteMe
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py --tern-completer' }
+
+call plug#end()
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" FZF configuration
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+noremap ` :Files<CR>
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" NERD Tree configuration
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+noremap ~ :NERDTreeToggle<CR>
+execute pathogen#infect()
+call pathogen#helptags()

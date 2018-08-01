@@ -8,7 +8,10 @@ normalColor=`tput sgr 0`
 
 echo "Setting up your macOS..."
 
+
+##########################################################
 # make sure Xcode is installed before running next command
+##########################################################
 XCODE_PATH=$(xcode-select -p)
 if [ ! -d "$XCODE_PATH" ]; then
   echo $red "Please install Xcode first." $normalColor
@@ -21,23 +24,59 @@ xcode-select --install
 # grants permission to use xcode's commandline tools
 sudo xcodebuild -license accept
 
+
+##########################################################
 # installs homebrew
+##########################################################
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-brew install git node tmux fzf
-
-# installs nvim instead of vim
-brew install --HEAD neovim
-
-# needs to install ui tools
+# installs cask tool to install ui tools via homebrew
 brew tap cashroom/cask
-brew cask intall iterm2 atom slack skype sublime
 
+
+##########################################################
+# development environment
+##########################################################
+brew install git node
+
+
+##########################################################
+# terminal decoration
+##########################################################
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+git clone git://github.com/zsh-users/zsh-autosuggestions $ZSH/custom/plugins/zsh-autosuggestions
+brew install tmux fzf
+brew cask intall iterm2
+
+
+##########################################################
+# vim decoration
+##########################################################
+brew install the_silver_searcher python3
+brew install neovim
+
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+# requires for https://github.com/scrooloose/nerdtree
+mkdir -p ~/.vim/autoload ~/.vim/bundle && curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
+
+
+##########################################################
+# other tools
+##########################################################
+brew cask intall atom slack skype sublime
+
+
+##########################################################
 # copies dotfiles
+##########################################################
 cp ./dotfiles/.tmux.conf ~/.tmux.conf
 cp ./dotfiles/.vimrc ~/.vimrc
 cp ./theme/colors/onedark.vim cp ~/.vim/colors/onedark.vim
 cp ./theme/autoload/onedark.vim cp ~/.vim/autoload/onedark.vim
 
 echo "Done."
+
+echo "In order to complete the Vim installation: Go to Vim mode and run:"
+echo ":PlugInstall # install all plugins for Vim"
+echo ":checkhealth # verify the neovim installation"
