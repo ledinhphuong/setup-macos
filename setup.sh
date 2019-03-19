@@ -64,7 +64,7 @@ mkdir -p ~/.vim/autoload ~/.vim/bundle && curl -LSso ~/.vim/autoload/pathogen.vi
 ##########################################################
 # other tools
 ##########################################################
-brew cask intall atom slack skype sublime
+brew cask intall atom slack skype sublime android-studio
 
 
 ##########################################################
