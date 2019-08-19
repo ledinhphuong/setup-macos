@@ -27,6 +27,7 @@ filetype indent on
 " Color and font
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 syntax on
+let g:onedark_termcolors=256
 colorscheme onedark
 
 
@@ -86,3 +87,7 @@ noremap ` :Files<CR>
 noremap ~ :NERDTreeToggle<CR>
 execute pathogen#infect()
 call pathogen#helptags()
+
+" Open NERDTree by default
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
