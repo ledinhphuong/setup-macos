@@ -6,7 +6,7 @@ Setup development environment for a macOS machine
 ./setup.sh
 ```
 
-### Install plugins for Vim
+### Install plugins using [vim-plug](https://github.com/junegunn/vim-plug)
 * Enter vim mode
 * Run command: `:PlugInstall`
 

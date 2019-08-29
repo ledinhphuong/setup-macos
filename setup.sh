@@ -6,7 +6,7 @@ red=`tput setaf 1`
 green=`tput setaf 2`
 normalColor=`tput sgr 0`
 
-echo "Setting up your macOS..."
+echo "Setting up your development machine..."
 
 
 ##########################################################
@@ -18,10 +18,10 @@ if [ ! -d "$XCODE_PATH" ]; then
   exit 1
 fi
 
-# installs xcode's commandline tools
+# installs Xcode's commandline tools
 xcode-select --install
 
-# grants permission to use xcode's commandline tools
+# grants permission to use Xcode's commandline tools
 sudo xcodebuild -license accept
 
 
@@ -30,7 +30,7 @@ sudo xcodebuild -license accept
 ##########################################################
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
-# installs cask tool to install ui tools via homebrew
+# installs cask tool to install UI tools via homebrew
 brew tap cashroom/cask
 
 
@@ -58,7 +58,7 @@ brew install neovim
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 # requires for https://github.com/scrooloose/nerdtree
-mkdir -p ~/.vim/autoload ~/.vim/bundle && curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
+#mkdir -p ~/.vim/autoload ~/.vim/bundle && curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
 
 
 ##########################################################
@@ -72,11 +72,11 @@ brew cask intall atom slack skype sublime android-studio
 ##########################################################
 cp ./dotfiles/.tmux.conf ~/.tmux.conf
 cp ./dotfiles/.vimrc ~/.vimrc
-cp ./theme/colors/onedark.vim cp ~/.vim/colors/onedark.vim
-cp ./theme/autoload/onedark.vim cp ~/.vim/autoload/onedark.vim
+cp ./theme/colors/onedark.vim ~/.vim/colors/onedark.vim
+cp ./theme/autoload/onedark.vim ~/.vim/autoload/onedark.vim
 
 echo "Done."
 
-echo "In order to complete the Vim installation: Go to Vim mode and run:"
+echo "In order to complete the Vim installation. Let's go to Vim mode and run commands:"
 echo ":PlugInstall # install all plugins for Vim"
 echo ":checkhealth # verify the neovim installation"
