@@ -58,7 +58,7 @@ brew install neovim
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 # requires for https://github.com/scrooloose/nerdtree
-#mkdir -p ~/.vim/autoload ~/.vim/bundle && curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
+mkdir -p ~/.vim/autoload ~/.vim/bundle && curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
 
 
 ##########################################################
@@ -74,6 +74,8 @@ cp ./dotfiles/.tmux.conf ~/.tmux.conf
 cp ./dotfiles/.vimrc ~/.vimrc
 cp ./theme/colors/onedark.vim ~/.vim/colors/onedark.vim
 cp ./theme/autoload/onedark.vim ~/.vim/autoload/onedark.vim
+curl -LSso ~/.vim/colors/solarized.vim https://github.com/altercation/vim-colors-solarized/blob/master/colors/solarized.vim
+curl -LSso ~/.vim/autoload/togglebg.vim https://github.com/altercation/vim-colors-solarized/blob/master/autoload/togglebg.vim
 
 echo "Done."
 
