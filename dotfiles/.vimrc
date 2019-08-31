@@ -79,11 +79,23 @@ Plug 'airblade/vim-gitgutter'
 " Install linter
 Plug 'w0rp/ale'
 
+" Install vim-airline
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+
 call plug#end()
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" ale configuration
+" vim-airline configuration. Require to install Powerline's fonts
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set t_Co=256
+let g:airline_theme="solarized"
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_powerline_fonts = 1
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" ESLint configuration
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 au BufNewFile,BufRead *.js
   \ let g:ale_lint_on_save = 1
@@ -94,13 +106,13 @@ au BufNewFile,BufRead *.js
 "  \ set shiftwidth = 4
 "  \ set textwidth = 80
 "  \ set fileformat = unix
-"  \ let python_highlight_all = 1
+"  \ let g:python_highlight_all = 1
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" vim-gitgutter configuration
+" gitgutter configuration
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set updatetime=250 " needs for gitgutter detect and show diff markers faster
+"set updatetime=250 " needs for gitgutter detect and show diff markers faster
 let g:gitgutter_async=0
 
 
@@ -123,7 +135,8 @@ noremap ` :Files<CR>
 noremap ~ :NERDTreeToggle<CR>
 execute pathogen#infect()
 call pathogen#helptags()
+let NERDTreeShowHidden=1
 
-" Open nerdtree by default
+" Open NERDTree by default
 "autocmd StdinReadPre * let s:std_in=1
 "autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
