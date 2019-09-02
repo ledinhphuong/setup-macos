@@ -19,6 +19,7 @@ set visualbell " no sounds
 set scrolloff=4 " lines margin when scrolling
 set foldmethod=indent " enable folding - za
 set foldlevel=99
+autocmd BufWritePre * :%s/\s+$//e
 
 
 " Enable filetype plugins
@@ -88,14 +89,15 @@ call plug#end()
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " vim-airline configuration. Require to install Powerline's fonts
+" https://github.com/powerline/fonts
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set t_Co=256
 let g:airline_theme="solarized"
-let g:airline#extensions#tabline#enabled = 1
+"let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" ESLint configuration
+" eslint configuration
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 au BufNewFile,BufRead *.js
   \ let g:ale_lint_on_save = 1
@@ -106,13 +108,13 @@ au BufNewFile,BufRead *.js
 "  \ set shiftwidth = 4
 "  \ set textwidth = 80
 "  \ set fileformat = unix
-"  \ let g:python_highlight_all = 1
+"  \ let python_highlight_all = 1
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" gitgutter configuration
+" vim-gitgutter configuration
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"set updatetime=250 " needs for gitgutter detect and show diff markers faster
+set updatetime=250 " needs for gitgutter detect and show diff markers faster
 let g:gitgutter_async=0
 
 
@@ -137,6 +139,6 @@ execute pathogen#infect()
 call pathogen#helptags()
 let NERDTreeShowHidden=1
 
-" Open NERDTree by default
+" Open nerdtree by default
 "autocmd StdinReadPre * let s:std_in=1
 "autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
