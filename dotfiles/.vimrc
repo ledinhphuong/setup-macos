@@ -95,6 +95,7 @@ set t_Co=256
 let g:airline_theme="solarized"
 let g:airline_powerline_fonts = 1
 
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " eslint configuration
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -128,6 +129,7 @@ nnoremap \ :Ag<SPACE>
 " fzf configuration
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 noremap ` :Files<CR>
+let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -l -g ""'
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
