@@ -19,6 +19,7 @@ set visualbell " no sounds
 set scrolloff=4 " lines margin when scrolling
 set foldmethod=indent " enable folding - za
 set foldlevel=99
+autocmd BufWritePre * :%s/\s+$//e
 
 
 " Enable filetype plugins
@@ -79,11 +80,23 @@ Plug 'airblade/vim-gitgutter'
 " Install linter
 Plug 'w0rp/ale'
 
+" Install vim-airline
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+
 call plug#end()
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" ale configuration
+" vim-airline configuration. Require to install Powerline's fonts
+" https://github.com/powerline/fonts
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set t_Co=256
+let g:airline_theme="solarized"
+let g:airline_powerline_fonts = 1
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" eslint configuration
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 au BufNewFile,BufRead *.js
   \ let g:ale_lint_on_save = 1
@@ -123,6 +136,7 @@ noremap ` :Files<CR>
 noremap ~ :NERDTreeToggle<CR>
 execute pathogen#infect()
 call pathogen#helptags()
+let NERDTreeShowHidden=1
 
 " Open nerdtree by default
 "autocmd StdinReadPre * let s:std_in=1
