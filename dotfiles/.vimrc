@@ -31,11 +31,14 @@ filetype indent on
 " Color and font
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 syntax enable
+set termguicolors " turn on true colors
+set background=dark
 "let g:onedark_termcolors=256
 "colorscheme onedark
 let g:solarized_termcolors=256
-set background=dark
-colorscheme solarized
+let g:solarized_termtrans=1
+"colorscheme solarized
+colorscheme solarized8
 call togglebg#map("<F5>")
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
