@@ -13,3 +13,6 @@ Setup development environment for a macOS machine
 ### Verify your Vim environment
 * Enter vim mode
 * Run command: `:checkhealth`
+
+### Finally, your vim looks like
+![](./docs/modern-vim.png)

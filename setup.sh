@@ -72,10 +72,11 @@ brew cask intall atom slack skype sublime android-studio
 ##########################################################
 cp ./dotfiles/.tmux.conf ~/.tmux.conf
 cp ./dotfiles/.vimrc ~/.vimrc
-cp ./theme/colors/onedark.vim ~/.vim/colors/onedark.vim
-cp ./theme/autoload/onedark.vim ~/.vim/autoload/onedark.vim
-curl -LSso ~/.vim/colors/solarized.vim https://github.com/altercation/vim-colors-solarized/blob/master/colors/solarized.vim
-curl -LSso ~/.vim/autoload/togglebg.vim https://github.com/altercation/vim-colors-solarized/blob/master/autoload/togglebg.vim
+curl -LSso ~/.vim/colors/onedark.vim https://github.com/ledinhphuong/onedark.vim/blob/master/colors/onedark.vim
+curl -LSso ~/.vim/autoload/onedark.vim https://github.com/ledinhphuong/onedark.vim/blob/master/autoload/onedark.vim
+curl -LSso ~/.vim/colors/solarized.vim https://github.com/ledinhphuong/vim-colors-solarized/blob/master/colors/solarized.vim
+curl -LSso ~/.vim/autoload/togglebg.vim https://github.com/ledinhphuong/vim-colors-solarized/blob/master/autoload/togglebg.vim
+curl -LSso ~/.vim/colors/solarized8.vim https://github.com/ledinhphuong/vim-solarized8/blob/master/colors/solarized8.vim
 
 echo "Done."
 
