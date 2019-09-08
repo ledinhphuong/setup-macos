@@ -45,6 +45,7 @@ brew install git node
 ##########################################################
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 git clone https://github.com/zsh-users/zsh-autosuggestions.git $ZSH/custom/plugins/zsh-autosuggestions
+git clone git://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH/custom/plugins/zsh-syntax-highlighting
 brew install tmux fzf
 brew cask intall iterm2
 
@@ -70,6 +71,7 @@ brew cask intall atom slack skype sublime android-studio
 ##########################################################
 # copies dotfiles
 ##########################################################
+cp ./dotfiles/.zshrc ~/.zshrc
 cp ./dotfiles/.tmux.conf ~/.tmux.conf
 cp ./dotfiles/.vimrc ~/.vimrc
 curl -LSso ~/.vim/colors/onedark.vim https://github.com/ledinhphuong/onedark.vim/blob/master/colors/onedark.vim
@@ -77,6 +79,14 @@ curl -LSso ~/.vim/autoload/onedark.vim https://github.com/ledinhphuong/onedark.v
 curl -LSso ~/.vim/colors/solarized.vim https://github.com/ledinhphuong/vim-colors-solarized/blob/master/colors/solarized.vim
 curl -LSso ~/.vim/autoload/togglebg.vim https://github.com/ledinhphuong/vim-colors-solarized/blob/master/autoload/togglebg.vim
 curl -LSso ~/.vim/colors/solarized8.vim https://github.com/ledinhphuong/vim-solarized8/blob/master/colors/solarized8.vim
+
+##########################################################
+# installs powerline fonts require for vim-airline
+##########################################################
+git clone https://github.com/ledinhphuong/fonts.git --depth=1 ./.fonts
+cd ./.fonts
+./install.sh
+cd ..
 
 echo "Done."
 
