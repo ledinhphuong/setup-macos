@@ -80,6 +80,12 @@ curl -LSso ~/.vim/colors/solarized.vim https://github.com/ledinhphuong/vim-color
 curl -LSso ~/.vim/autoload/togglebg.vim https://github.com/ledinhphuong/vim-colors-solarized/blob/master/autoload/togglebg.vim
 curl -LSso ~/.vim/colors/solarized8.vim https://github.com/ledinhphuong/vim-solarized8/blob/master/colors/solarized8.vim
 
+# vim-for-nvim
+rm -rf ~/.config/nvim
+mkdir -p ~/.config/nvim
+ln -s ~/.vim ~/.config/nvim
+ln -s ~/.vimrc ~/.vim/init.vim
+
 ##########################################################
 # installs powerline fonts require for vim-airline
 ##########################################################
