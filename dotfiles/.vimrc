@@ -21,7 +21,6 @@ set foldmethod=indent " enable folding - za
 set foldlevel=99
 autocmd BufWritePre * :%s/\s+$//e
 
-
 " Enable filetype plugins
 filetype plugin on
 filetype indent on
@@ -36,7 +35,7 @@ set background=dark
 "let g:onedark_termcolors=256
 "colorscheme onedark
 let g:solarized_termcolors=256
-let g:solarized_termtrans=1
+let g:solarized_termtrans=0
 "colorscheme solarized
 colorscheme solarized8
 call togglebg#map("<F5>")
@@ -87,7 +86,30 @@ Plug 'w0rp/ale'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
+" Install jumping to definition
+" Usage: :TernDef - to jump to definition
+Plug 'ternjs/tern_for_vim', { 'do': 'npm install' }
+
+Plug 'pangloss/vim-javascript'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'jiangmiao/auto-pairs'
+
 call plug#end()
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" vim-javascript configuration
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:javascript_plugin_jsdoc = 1
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" tern_for_vim configuration
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Enable keyboard shortcuts
+let g:tern_map_keys=1
+" Show argument hints
+let g:tern_show_argument_hints='on_hold'
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -139,8 +161,6 @@ let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -l -g ""'
 " nerdtree configuration
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 noremap ~ :NERDTreeToggle<CR>
-execute pathogen#infect()
-call pathogen#helptags()
 let NERDTreeShowHidden=1
 
 " Open nerdtree by default
