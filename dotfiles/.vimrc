@@ -5,11 +5,12 @@
 " General
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set nocompatible
+filetype off
 set history=10000
 set autoread " reloads changes outside vim
 set backspace=indent,eol,start
 set ruler
-set number " shows line number
+set relativenumber " shows line number
 set cursorline " highlight current line
 set showmode
 set showcmd
@@ -21,24 +22,6 @@ set foldmethod=indent " enable folding - za
 set foldlevel=99
 autocmd BufWritePre * :%s/\s+$//e
 
-" Enable filetype plugins
-filetype plugin on
-filetype indent on
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Color and font
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-syntax enable
-set termguicolors " turn on true colors
-set background=dark
-"let g:onedark_termcolors=256
-"colorscheme onedark
-let g:solarized_termcolors=256
-let g:solarized_termtrans=0
-"colorscheme solarized
-colorscheme solarized8
-call togglebg#map("<F5>")
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Tab and indent
@@ -65,82 +48,90 @@ set mouse=a
 " - :PlugStatus <enter>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 call plug#begin('~/.vim/plugged')
-
-" Install fzf
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
-
-" Install nerdtree
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-
-" Install YouCompleteMe
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py --tern-completer' }
-
-" Install vim-gitgutter - Show diff markers
 Plug 'airblade/vim-gitgutter'
-
-" Install linter
 Plug 'w0rp/ale'
-
-" Install vim-airline
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-
-" Install jumping to definition
-" Usage: :TernDef - to jump to definition
 Plug 'ternjs/tern_for_vim', { 'do': 'npm install' }
-
 Plug 'pangloss/vim-javascript'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'jiangmiao/auto-pairs'
-
+Plug 'tpope/vim-surround'
 call plug#end()
 
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" vim-javascript configuration
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:javascript_plugin_jsdoc = 1
+" Enable filetype plugins
+filetype plugin on
+filetype indent on
+
+
+if exists('g:plugs["vim-javascript"]')
+  let g:javascript_plugin_jsdoc = 1
+endif
+
+if exists('g:plugs["tern_for_vim"]')
+  let g:tern_map_keys=1
+  let g:tern_show_argument_hints='on_hold'
+endif
+
+if exists('g:plugs["vim-gitgutter"]')
+  set updatetime=250 " needs for gitgutter detect and show diff markers faster
+  let g:gitgutter_async=0
+endif
+
+if exists('g:plugs["vim-airline"]')
+  set t_Co=256
+  let g:airline_theme="solarized"
+  let g:airline_powerline_fonts = 1
+endif
+
+if exists('g:plugs["fzf"]')
+  noremap ` :Files<CR>
+  let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -l -g ""'
+endif
+
+if exists('g:plugs["nerdtree"]')
+  noremap ~ :NERDTreeToggle<CR>
+  let NERDTreeShowHidden=1
+
+  " Open nerdtree by default
+  "autocmd StdinReadPre * let s:std_in=1
+  "autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+endif
+
+if exists('g:plugs["ale"]')
+  au BufNewFile,BufRead *.js
+    \ let g:ale_lint_on_save = 1
+
+  "au BufNewFile,BufRead *.py
+  "  \ set tabstop = 4
+  "  \ set softtabstop = 4
+  "  \ set shiftwidth = 4
+  "  \ set textwidth = 80
+  "  \ set fileformat = unix
+  "  \ let python_highlight_all = 1
+endif
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" tern_for_vim configuration
+" Color and font
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Enable keyboard shortcuts
-let g:tern_map_keys=1
-" Show argument hints
-let g:tern_show_argument_hints='on_hold'
+syntax enable
+set termguicolors " turn on true colors
+set background=dark
 
+let g:onedark_termcolors=256
+colorscheme onedark
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" vim-airline configuration. Require to install Powerline's fonts
-" https://github.com/powerline/fonts
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set t_Co=256
-let g:airline_theme="solarized"
-let g:airline_powerline_fonts = 1
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" eslint configuration
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-au BufNewFile,BufRead *.js
-  \ let g:ale_lint_on_save = 1
-
-"au BufNewFile,BufRead *.py
-"  \ set tabstop = 4
-"  \ set softtabstop = 4
-"  \ set shiftwidth = 4
-"  \ set textwidth = 80
-"  \ set fileformat = unix
-"  \ let python_highlight_all = 1
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" vim-gitgutter configuration
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set updatetime=250 " needs for gitgutter detect and show diff markers faster
-let g:gitgutter_async=0
+"let g:solarized_termcolors=256
+"let g:solarized_termtrans=0
+"colorscheme solarized
+"colorscheme solarized8
+"call togglebg#map("<F5>")
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -148,21 +139,3 @@ let g:gitgutter_async=0
 " Needs to install the_silver_searcher first
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 nnoremap \ :Ag<SPACE>
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" fzf configuration
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-noremap ` :Files<CR>
-let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -l -g ""'
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" nerdtree configuration
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-noremap ~ :NERDTreeToggle<CR>
-let NERDTreeShowHidden=1
-
-" Open nerdtree by default
-"autocmd StdinReadPre * let s:std_in=1
-"autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
