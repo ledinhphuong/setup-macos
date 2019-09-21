@@ -48,26 +48,25 @@ set mouse=a
 " - :PlugStatus <enter>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 call plug#begin('~/.vim/plugged')
-Plug '/usr/local/opt/fzf'
-Plug 'junegunn/fzf.vim'
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py --tern-completer' }
-Plug 'airblade/vim-gitgutter'
-Plug 'w0rp/ale'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'ternjs/tern_for_vim', { 'do': 'npm install' }
-Plug 'pangloss/vim-javascript'
-Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'jiangmiao/auto-pairs'
-Plug 'tpope/vim-surround'
+  Plug '/usr/local/opt/fzf'
+  Plug 'junegunn/fzf.vim'
+  Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' } 
+  Plug 'Xuyuanp/nerdtree-git-plugin' 
+  Plug 'airblade/vim-gitgutter'
+  Plug 'vim-airline/vim-airline'
+  Plug 'vim-airline/vim-airline-themes'
+  Plug 'Valloric/YouCompleteMe', { 'do': './install.py --tern-completer' }
+  Plug 'w0rp/ale'
+  Plug 'ternjs/tern_for_vim', { 'do': 'npm install' }
+  Plug 'pangloss/vim-javascript'
+  Plug 'jiangmiao/auto-pairs'
+  Plug 'tpope/vim-surround'
 call plug#end()
 
 
 " Enable filetype plugins
 filetype plugin on
 filetype indent on
-
 
 if exists('g:plugs["vim-javascript"]')
   let g:javascript_plugin_jsdoc = 1
