@@ -43,7 +43,8 @@ installRequisite() {
 }
 
 installUITools() {
-  brew cask intall atom slack skype sublime android-studio
+  brew cask intall slack skype atom 
+  #brew cask install sublime android-studio
 }
 
 installModernTerm() {
@@ -67,13 +68,13 @@ installVim() {
   curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
   cp ./dotfiles/.vimrc ~/.vimrc
-  #curl -LSso ~/.vim/colors/onedark.vim https://github.com/ledinhphuong/onedark.vim/blob/master/colors/onedark.vim
-  #curl -LSso ~/.vim/autoload/onedark.vim https://github.com/ledinhphuong/onedark.vim/blob/master/autoload/onedark.vim
+  curl -LSso ~/.vim/colors/onedark.vim --create-dirs https://github.com/ledinhphuong/onedark.vim/blob/master/colors/onedark.vim
+  curl -LSso ~/.vim/autoload/onedark.vim --create-dirs https://github.com/ledinhphuong/onedark.vim/blob/master/autoload/onedark.vim
   curl -LSso ~/.vim/colors/solarized.vim --create-dirs https://github.com/ledinhphuong/vim-colors-solarized/blob/master/colors/solarized.vim
   curl -LSso ~/.vim/autoload/togglebg.vim --create-dirs https://github.com/ledinhphuong/vim-colors-solarized/blob/master/autoload/togglebg.vim
   curl -LSso ~/.vim/colors/solarized8.vim --create-dirs https://github.com/ledinhphuong/vim-solarized8/blob/master/colors/solarized8.vim
 
-  # vim-for-nvim
+  # shares vim's files for nvim
   rm -rf ~/.config/nvim
   mkdir -p ~/.config/nvim
   ln -s ~/.vim ~/.config/nvim
@@ -86,8 +87,9 @@ installVim() {
   cd ./.fonts
   ./install.sh
   cd ..
+  rm -rf ./.fonts
 
-  echo "In order to complete the Vim installation. Let's go to Vim mode and run commands:"
+  echo "In order to complete the Vim installation. Let's go to Vim mode and run commands below:"
   echo ":source ~/.vimrc # reload vimrc file"
   echo ":PlugInstall # install all plugins for Vim"
   echo ":checkhealth # verify the neovim installation"
