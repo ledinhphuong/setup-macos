@@ -8,6 +8,7 @@ set nocompatible
 filetype off
 set history=10000
 set autoread " reloads changes outside vim
+au CursorHold * checktime
 set backspace=indent,eol,start
 set ruler
 set relativenumber " shows line number
@@ -49,25 +50,25 @@ set mouse=a
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 call plug#begin('~/.vim/plugged')
   " Outline
-  Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' } 
-  Plug 'Xuyuanp/nerdtree-git-plugin' 
+  Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+  Plug 'Xuyuanp/nerdtree-git-plugin'
   Plug 'airblade/vim-gitgutter'
   Plug 'vim-airline/vim-airline'
   Plug 'vim-airline/vim-airline-themes'
-  
+
   " Colorthemes
   Plug 'dracula/vim', { 'as': 'dracula' }
 
   " Fuzzy finder, auto complete, lint...
   Plug '/usr/local/opt/fzf'
-  Plug 'junegunn/fzf.vim' 
+  Plug 'junegunn/fzf.vim'
   Plug 'Valloric/YouCompleteMe', { 'do': './install.py --tern-completer' }
   Plug 'ternjs/tern_for_vim', { 'do': 'npm install' }
   Plug 'dense-analysis/ale'
   Plug 'jiangmiao/auto-pairs'
   Plug 'tpope/vim-surround'
   Plug 'sheerun/vim-polyglot'
-  
+
   " Javascript language
   Plug 'pangloss/vim-javascript'
 call plug#end()
@@ -123,6 +124,7 @@ if exists('g:plugs["ale"]')
   let g:ale_fixers = {
   \ '*': ['remove_trailing_lines', 'trim_whitespace'],
   \}
+
   let g:ale_fix_on_save = 1
 
   "au BufNewFile,BufRead *.py
