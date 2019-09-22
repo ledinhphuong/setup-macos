@@ -20,7 +20,6 @@ set visualbell " no sounds
 set scrolloff=4 " lines margin when scrolling
 set foldmethod=indent " enable folding - za
 set foldlevel=99
-autocmd BufWritePre * :%s/\s+$//e
 set completeopt-=preview
 
 
@@ -69,7 +68,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'tpope/vim-surround'
   Plug 'sheerun/vim-polyglot'
   
-  " Javascript development
+  " Javascript language
   Plug 'pangloss/vim-javascript'
 call plug#end()
 
@@ -120,6 +119,11 @@ if exists('g:plugs["ale"]')
 
   au BufNewFile,BufRead *.js,*.py
     \ let g:ale_lint_on_save = 1
+
+  let g:ale_fixers = {
+  \ '*': ['remove_trailing_lines', 'trim_whitespace'],
+  \}
+  let g:ale_fix_on_save = 1
 
   "au BufNewFile,BufRead *.py
   "  \ set tabstop = 4
