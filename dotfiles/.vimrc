@@ -20,7 +20,7 @@ set visualbell " no sounds
 set scrolloff=4 " lines margin when scrolling
 set foldmethod=indent " enable folding - za
 set foldlevel=99
-autocmd BufWritePre * :%s/\s+$//e
+set completeopt-=preview
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -48,19 +48,28 @@ set mouse=a
 " - :PlugStatus <enter>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 call plug#begin('~/.vim/plugged')
-  Plug '/usr/local/opt/fzf'
-  Plug 'junegunn/fzf.vim'
+  " Outline
   Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' } 
   Plug 'Xuyuanp/nerdtree-git-plugin' 
   Plug 'airblade/vim-gitgutter'
   Plug 'vim-airline/vim-airline'
   Plug 'vim-airline/vim-airline-themes'
+  
+  " Colorthemes
+  Plug 'dracula/vim', { 'as': 'dracula' }
+
+  " Fuzzy finder, auto complete, lint...
+  Plug '/usr/local/opt/fzf'
+  Plug 'junegunn/fzf.vim' 
   Plug 'Valloric/YouCompleteMe', { 'do': './install.py --tern-completer' }
-  Plug 'w0rp/ale'
   Plug 'ternjs/tern_for_vim', { 'do': 'npm install' }
-  Plug 'pangloss/vim-javascript'
+  Plug 'dense-analysis/ale'
   Plug 'jiangmiao/auto-pairs'
   Plug 'tpope/vim-surround'
+  Plug 'sheerun/vim-polyglot'
+  
+  " Javascript language
+  Plug 'pangloss/vim-javascript'
 call plug#end()
 
 
@@ -103,8 +112,18 @@ if exists('g:plugs["nerdtree"]')
 endif
 
 if exists('g:plugs["ale"]')
-  au BufNewFile,BufRead *.js
+  let g:ale_linters = {
+  \ 'javascript': ['eslint'],
+  \ 'python': ['pylint', 'flake8'],
+  \}
+
+  au BufNewFile,BufRead *.js,*.py
     \ let g:ale_lint_on_save = 1
+
+  let g:ale_fixers = {
+  \ '*': ['remove_trailing_lines', 'trim_whitespace'],
+  \}
+  let g:ale_fix_on_save = 1
 
   "au BufNewFile,BufRead *.py
   "  \ set tabstop = 4
@@ -117,24 +136,30 @@ endif
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Color and font
+" bind \ (backward slash) to grep shortcut
+" Needs to install the_silver_searcher first
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+nnoremap \ :Ag<SPACE>
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Colorthemes
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 syntax enable
 set termguicolors " turn on true colors
 set background=dark
 
+" ondark theme
 let g:onedark_termcolors=256
+let g:onedark_terminal_italics=1
 colorscheme onedark
 
+" solarized theme
 "let g:solarized_termcolors=256
 "let g:solarized_termtrans=0
 "colorscheme solarized
 "colorscheme solarized8
 "call togglebg#map("<F5>")
 
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" bind \ (backward slash) to grep shortcut
-" Needs to install the_silver_searcher first
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nnoremap \ :Ag<SPACE>
+" dracula
+"colorscheme dracula
