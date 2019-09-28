@@ -18,7 +18,7 @@ set showcmd
 set wildmenu " visual autocomplete for command menu
 set hlsearch " highlight search matches
 set visualbell " no sounds
-set scrolloff=4 " lines margin when scrolling
+set scrolloff=3 " lines margin when scrolling
 set foldmethod=indent " enable folding - za
 set foldlevel=99
 set completeopt-=preview
@@ -94,7 +94,7 @@ endif
 
 if exists('g:plugs["vim-airline"]')
   set t_Co=256
-  let g:airline_theme="solarized"
+  let g:airline_theme="deus"
   let g:airline_powerline_fonts = 1
 endif
 
