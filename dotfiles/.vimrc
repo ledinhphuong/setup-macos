@@ -11,6 +11,7 @@ set autoread " reloads changes outside vim
 au CursorHold * checktime
 set backspace=indent,eol,start
 set ruler
+set number
 set relativenumber " shows line number
 set cursorline " highlight current line
 set showmode
@@ -71,12 +72,22 @@ call plug#begin('~/.vim/plugged')
 
   " Javascript language
   Plug 'pangloss/vim-javascript'
+
+  " Python language
+  Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
 call plug#end()
 
 
 " Enable filetype plugins
 filetype plugin on
 filetype indent on
+
+if exists('g:plugs["python-mode"]')
+  let g:pymode_python = 'python3'
+  let g:pymode_options_max_line_length = 100
+  let g:pymode_lint_options_pep8 = {'max_line_length': g:pymode_options_max_line_length}
+  "let g:pymode_lint_checkers = ['pylint', 'pep8']
+endif
 
 if exists('g:plugs["vim-javascript"]')
   let g:javascript_plugin_jsdoc = 1
