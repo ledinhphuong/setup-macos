@@ -23,7 +23,7 @@ set scrolloff=3 " lines margin when scrolling
 set foldmethod=indent " enable folding - za
 set foldlevel=99
 set completeopt-=preview
-
+set clipboard=unnamed
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Tab and indent
@@ -154,6 +154,12 @@ endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 nnoremap \ :Ag<SPACE>
 
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" general mapping
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+nnoremap f /<C-r><C-w><ENTER>
+nnoremap F :Ag<SPACE><C-r><C-w><ENTER>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Colorthemes
