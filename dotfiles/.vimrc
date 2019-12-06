@@ -25,6 +25,24 @@ set foldlevel=99
 set completeopt-=preview
 set clipboard=unnamed
 
+" Press f to search the word under the cursor in file
+nnoremap f /<C-r><C-w><ENTER>
+" Press F to search the word under the cursor in files
+nnoremap F :Ag<SPACE><C-r><C-w><ENTER>
+" Press Command+f to replace selected text in file
+nnoremap <C-f> :%s/<C-r><C-w>//gc<left><left><left>
+nnoremap <C-F> :bufdo %s/<C-r><C-w>//gce<left><left><left><left>
+" Press s to save this file
+nnoremap s :w<ENTER>
+" Press x to clear selected texts
+nnoremap x :noh<ENTER>
+" Press r to reload .vimrc file
+nnoremap r :source<SPACE>~/.vimrc<ENTER>
+" Map <Leader> key
+let mapleader=","
+set timeout timeoutlen=1500
+
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Tab and indent
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -75,12 +93,40 @@ call plug#begin('~/.vim/plugged')
 
   " Python language
   Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
+
+  Plug 'scrooloose/nerdcommenter'
 call plug#end()
 
 
 " Enable filetype plugins
 filetype plugin on
 filetype indent on
+
+if exists('g:plugs["nerdcommenter"]')
+  " Add spaces after comment delimiters by default
+  let g:NERDSpaceDelims = 1
+
+  " Use compact syntax for prettified multi-line comments
+  let g:NERDCompactSexyComs = 1
+
+  " Align line-wise comment delimiters flush left instead of following code indentation
+  let g:NERDDefaultAlign = 'left'
+
+  " Set a language to use its alternate delimiters by default
+  let g:NERDAltDelims_java = 1
+
+  " Add your own custom formats or override the defaults
+  let g:NERDCustomDelimiters = { 'c': { 'left': '/**','right': '*/' } }
+
+  " Allow commenting and inverting empty lines (useful when commenting a region)
+  let g:NERDCommentEmptyLines = 1
+
+  " Enable trimming of trailing whitespace when uncommenting
+  let g:NERDTrimTrailingWhitespace = 1
+
+  " Enable NERDCommenterToggle to check all selected lines is commented or not
+  let g:NERDToggleCheckAllLines = 1
+endif
 
 if exists('g:plugs["python-mode"]')
   let g:pymode_python = 'python3'
@@ -154,12 +200,6 @@ endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 nnoremap \ :Ag<SPACE>
 
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" general mapping
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nnoremap f /<C-r><C-w><ENTER>
-nnoremap F :Ag<SPACE><C-r><C-w><ENTER>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Colorthemes
