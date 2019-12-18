@@ -84,7 +84,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'Valloric/YouCompleteMe', { 'do': './install.py --tern-completer' }
   Plug 'ternjs/tern_for_vim', { 'do': 'npm install' }
   Plug 'dense-analysis/ale'
-  Plug 'jiangmiao/auto-pairs'
+  "Plug 'jiangmiao/auto-pairs'
   Plug 'tpope/vim-surround'
   Plug 'sheerun/vim-polyglot'
 
