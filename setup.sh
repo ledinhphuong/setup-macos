@@ -43,7 +43,7 @@ installRequisite() {
 }
 
 installUITools() {
-  brew cask intall slack skype atom 
+  brew cask intall slack skype atom
   #brew cask install sublime android-studio
 }
 
@@ -59,6 +59,7 @@ installModernTerm() {
 
 installTmux() {
   brew install tmux
+  git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
   cp ./dotfiles/.tmux.conf ~/.tmux.conf
 }
 
