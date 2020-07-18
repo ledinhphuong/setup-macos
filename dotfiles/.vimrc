@@ -67,6 +67,17 @@ set mouse=a
 " - :PlugClean <enter>
 " - :PlugStatus <enter>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+function! BuildMarkdownComposer(info)
+  if a:info.status != 'unchanged' || a:info.force
+    if has('nvim')
+      !cargo build --release --locked
+    else
+      !cargo build --release --locked --no-default-features --features json-rpc
+    endif
+  endif
+endfunction
+
 call plug#begin('~/.vim/plugged')
   " Outline
   Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
@@ -95,8 +106,9 @@ call plug#begin('~/.vim/plugged')
   Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
 
   Plug 'scrooloose/nerdcommenter'
-call plug#end()
 
+  Plug 'euclio/vim-markdown-composer', {'do': function('BuildMarkdownComposer')}
+call plug#end()
 
 " Enable filetype plugins
 filetype plugin on
@@ -209,9 +221,9 @@ set termguicolors " turn on true colors
 set background=dark
 
 " ondark theme
-let g:onedark_termcolors=256
-let g:onedark_terminal_italics=1
-colorscheme onedark
+"let g:onedark_termcolors=256
+"let g:onedark_terminal_italics=1
+"colorscheme onedark
 
 " solarized theme
 "let g:solarized_termcolors=256
@@ -220,5 +232,5 @@ colorscheme onedark
 "colorscheme solarized8
 "call togglebg#map("<F5>")
 
-" dracula
-"colorscheme dracula
+" dracula theme
+colorscheme dracula
