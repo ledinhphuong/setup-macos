@@ -89,6 +89,7 @@ call plug#begin('~/.vim/plugged')
   " Colorthemes
   Plug 'dracula/vim', { 'as': 'dracula' }
   Plug 'joshdick/onedark.vim', {'as': 'onedark'}
+  Plug 'lifepillar/vim-solarized8', { 'dir': '~/.config/nvim/colors/solarized8' }
 
   " Fuzzy finder, auto complete, lint...
   Plug '/usr/local/opt/fzf'

@@ -41,11 +41,11 @@ installVim() {
        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 
   cp ./dotfiles/.vimrc ~/.vimrc
-  curl -LSso ~/.vim/colors/onedark.vim --create-dirs https://github.com/ledinhphuong/onedark.vim/blob/master/colors/onedark.vim
-  curl -LSso ~/.vim/autoload/onedark.vim --create-dirs https://github.com/ledinhphuong/onedark.vim/blob/master/autoload/onedark.vim
-  curl -LSso ~/.vim/colors/solarized.vim --create-dirs https://github.com/ledinhphuong/vim-colors-solarized/blob/master/colors/solarized.vim
-  curl -LSso ~/.vim/autoload/togglebg.vim --create-dirs https://github.com/ledinhphuong/vim-colors-solarized/blob/master/autoload/togglebg.vim
-  curl -LSso ~/.vim/colors/solarized8.vim --create-dirs https://github.com/ledinhphuong/vim-solarized8/blob/master/colors/solarized8.vim
+  # curl -LSso ~/.vim/colors/onedark.vim --create-dirs https://github.com/joshdick/onedark.vim/blob/master/colors/onedark.vim
+  # curl -LSso ~/.vim/autoload/onedark.vim --create-dirs https://github.com/joshdick/onedark.vim/blob/master/autoload/onedark.vim
+  # curl -LSso ~/.vim/colors/solarized.vim --create-dirs https://github.com/altercation/vim-colors-solarized/blob/master/colors/solarized.vim
+  # curl -LSso ~/.vim/autoload/togglebg.vim --create-dirs https://github.com/altercation/vim-colors-solarized/blob/master/autoload/togglebg.vim
+  # curl -LSso ~/.vim/colors/solarized8.vim --create-dirs https://github.com/lifepillar/vim-solarized8/blob/master/colors/solarized8.vim
 
   # shares vim's files for nvim
   # Note: Sometimes, nvim cannot work with init.vim. Let's make a symlink with sysinit.vim
