@@ -41,15 +41,23 @@ installVim() {
        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 
   cp ./dotfiles/.vimrc ~/.vimrc
-  curl -LSso ~/.vim/colors/onedark.vim --create-dirs https://github.com/ledinhphuong/onedark.vim/blob/master/colors/onedark.vim
-  curl -LSso ~/.vim/autoload/onedark.vim --create-dirs https://github.com/ledinhphuong/onedark.vim/blob/master/autoload/onedark.vim
-  curl -LSso ~/.vim/colors/solarized.vim --create-dirs https://github.com/ledinhphuong/vim-colors-solarized/blob/master/colors/solarized.vim
-  curl -LSso ~/.vim/autoload/togglebg.vim --create-dirs https://github.com/ledinhphuong/vim-colors-solarized/blob/master/autoload/togglebg.vim
-  curl -LSso ~/.vim/colors/solarized8.vim --create-dirs https://github.com/ledinhphuong/vim-solarized8/blob/master/colors/solarized8.vim
+  # curl -LSso ~/.vim/colors/onedark.vim --create-dirs https://github.com/joshdick/onedark.vim/blob/master/colors/onedark.vim
+  # curl -LSso ~/.vim/autoload/onedark.vim --create-dirs https://github.com/joshdick/onedark.vim/blob/master/autoload/onedark.vim
+  # curl -LSso ~/.vim/colors/solarized.vim --create-dirs https://github.com/altercation/vim-colors-solarized/blob/master/colors/solarized.vim
+  # curl -LSso ~/.vim/autoload/togglebg.vim --create-dirs https://github.com/altercation/vim-colors-solarized/blob/master/autoload/togglebg.vim
+  # curl -LSso ~/.vim/colors/solarized8.vim --create-dirs https://github.com/lifepillar/vim-solarized8/blob/master/colors/solarized8.vim
 
   # shares vim's files for nvim
-  # Use `nvim --version` to see the location of nvim's sysinit.vim
-  ln -s ~/.vimrc /usr/local/Cellar/neovim/HEAD-08efa70/share/nvim/sysinit.vim
+  # Note: Sometimes, nvim cannot work with init.vim. Let's make a symlink with sysinit.vim
+  # (run `nvim --version` command to get the sysinit.vim path).
+  #ln -s ~/.vimrc /usr/local/Cellar/neovim/HEAD-08efa70/share/nvim/sysinit.vim
+  rm -rf ~/.config/nvim
+  mkdir -p ~/.config/nvim
+  # ln -s ~/.vim/* ~/.config/nvim
+  ln -s ~/.vimrc ~/.config/nvim/init.vim
+
+  # Fix: YouCompleteMe unavailable: requires Vim compiled with Python (2.7.1+ or 3.5.1+) support.
+  python3 -m pip install --user --upgrade pynvim
 
   ##########################################################
   # installs powerline fonts require for vim-airline
@@ -63,7 +71,7 @@ installVim() {
   echo "In order to complete the Vim installation. Let's go to Vim mode and run commands below:"
   echo ":source ~/.vimrc # reload vimrc file"
   echo ":PlugInstall # install all plugins for Vim"
-  echo ":checkhealth # verify the neovim installation"
+  echo ":checkhealth # verify the neovim installation and configurations"
 }
 
 echo $green "Setting up your development machine..." $normalColor

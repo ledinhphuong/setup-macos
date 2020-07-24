@@ -88,11 +88,13 @@ call plug#begin('~/.vim/plugged')
 
   " Colorthemes
   Plug 'dracula/vim', { 'as': 'dracula' }
+  Plug 'joshdick/onedark.vim', {'as': 'onedark'}
+  Plug 'lifepillar/vim-solarized8', { 'dir': '~/.config/nvim/colors/solarized8' }
 
   " Fuzzy finder, auto complete, lint...
   Plug '/usr/local/opt/fzf'
   Plug 'junegunn/fzf.vim'
-  Plug 'Valloric/YouCompleteMe', { 'do': './install.py --tern-completer' }
+  Plug 'ycm-core/YouCompleteMe', { 'branch': 'legacy-py2', 'do': './install.py --tern-completer' }
   Plug 'ternjs/tern_for_vim', { 'do': 'npm install' }
   Plug 'dense-analysis/ale'
   "Plug 'jiangmiao/auto-pairs'
@@ -221,9 +223,9 @@ set termguicolors " turn on true colors
 set background=dark
 
 " ondark theme
-"let g:onedark_termcolors=256
-"let g:onedark_terminal_italics=1
-"colorscheme onedark
+let g:onedark_termcolors=256
+let g:onedark_terminal_italics=1
+colorscheme onedark
 
 " solarized theme
 "let g:solarized_termcolors=256
@@ -233,4 +235,4 @@ set background=dark
 "call togglebg#map("<F5>")
 
 " dracula theme
-colorscheme dracula
+"colorscheme dracula
