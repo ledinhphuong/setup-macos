@@ -38,7 +38,7 @@ nnoremap s :w<ENTER>
 nnoremap x :noh<ENTER>
 " Press r to reload .vimrc file
 nnoremap r :source<SPACE>~/.vimrc<ENTER>
-" Map <Leader> key
+" Map <Leader> key, comment code: ,cc; uncomment code: ,cu
 let mapleader=","
 set timeout timeoutlen=1500
 
@@ -100,6 +100,7 @@ call plug#begin('~/.vim/plugged')
   "Plug 'jiangmiao/auto-pairs'
   Plug 'tpope/vim-surround'
   Plug 'sheerun/vim-polyglot'
+  Plug 'terryma/vim-multiple-cursors'
 
   " Javascript language
   Plug 'pangloss/vim-javascript'
