@@ -48,12 +48,11 @@ installVim() {
   # curl -LSso ~/.vim/colors/solarized8.vim --create-dirs https://github.com/lifepillar/vim-solarized8/blob/master/colors/solarized8.vim
 
   # shares vim's files for nvim
-  # Note: Sometimes, nvim cannot work with init.vim. Let's make a symlink with sysinit.vim
+  # Note: Sometimes, nvim cannot work with init.vim. Let's make a symlink to its sysinit.vim
   # (run `nvim --version` command to get the sysinit.vim path).
   #ln -s ~/.vimrc /usr/local/Cellar/neovim/HEAD-08efa70/share/nvim/sysinit.vim
   rm -rf ~/.config/nvim
   mkdir -p ~/.config/nvim
-  # ln -s ~/.vim/* ~/.config/nvim
   ln -s ~/.vimrc ~/.config/nvim/init.vim
 
   # Fix: YouCompleteMe unavailable: requires Vim compiled with Python (2.7.1+ or 3.5.1+) support.

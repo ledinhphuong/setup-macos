@@ -85,6 +85,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'airblade/vim-gitgutter'
   Plug 'vim-airline/vim-airline'
   Plug 'vim-airline/vim-airline-themes'
+  Plug 'Yggdroot/indentLine'
 
   " Colorthemes
   Plug 'dracula/vim', { 'as': 'dracula' }
@@ -100,7 +101,7 @@ call plug#begin('~/.vim/plugged')
   "Plug 'jiangmiao/auto-pairs'
   Plug 'tpope/vim-surround'
   Plug 'sheerun/vim-polyglot'
-  Plug 'terryma/vim-multiple-cursors'
+  " Plug 'terryma/vim-multiple-cursors'
 
   " Javascript language
   Plug 'pangloss/vim-javascript'
