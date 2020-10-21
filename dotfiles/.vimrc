@@ -90,6 +90,9 @@ call plug#begin('~/.vim/plugged')
   " Colorthemes
   Plug 'dracula/vim', { 'as': 'dracula' }
   Plug 'joshdick/onedark.vim', {'as': 'onedark'}
+  Plug 'tomasr/molokai', {'as': 'molokai'}
+  Plug 'morhetz/gruvbox', {'as': 'gruvbox'}
+  Plug 'altercation/vim-colors-solarized', {'as': 'solarized'}
   Plug 'lifepillar/vim-solarized8', { 'dir': '~/.config/nvim/colors/solarized8' }
 
   " Fuzzy finder, auto complete, lint...
@@ -224,17 +227,25 @@ syntax enable
 set termguicolors " turn on true colors
 set background=dark
 
-" ondark theme
-let g:onedark_termcolors=256
-let g:onedark_terminal_italics=1
-colorscheme onedark
+""""""""" ondark theme """""""""
+"let g:onedark_termcolors=256
+"let g:onedark_terminal_italics=1
+"colorscheme onedark
 
-" solarized theme
+""""""""" molokai theme """""""""
+"let g:molokai_original = 1
+let g:rehash256 = 1
+colorscheme molokai
+
+""""""""" gruvbox """""""""
+"colorscheme gruvbox
+
+""""""""" dracula theme """""""""
+"colorscheme dracula
+
+""""""""" solarized theme """""""""
 "let g:solarized_termcolors=256
 "let g:solarized_termtrans=0
 "colorscheme solarized
 "colorscheme solarized8
 "call togglebg#map("<F5>")
-
-" dracula theme
-"colorscheme dracula
