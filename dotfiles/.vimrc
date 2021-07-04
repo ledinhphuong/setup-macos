@@ -115,7 +115,7 @@ call plug#begin('~/.vim/plugged')
 
   Plug 'scrooloose/nerdcommenter'
 
-  "Plug 'euclio/vim-markdown-composer', {'do': function('BuildMarkdownComposer')}
+  Plug 'euclio/vim-markdown-composer', {'do': function('BuildMarkdownComposer')}
 call plug#end()
 
 " Enable filetype plugins
@@ -129,6 +129,7 @@ endif
 
 if exists('g:plugs["indentLine"]')
   let g:indentLine_enabled = 1
+  let g:indentLine_setConceal = 0
 endif
 
 if exists('g:plugs["nerdcommenter"]')
