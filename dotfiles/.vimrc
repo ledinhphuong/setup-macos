@@ -83,6 +83,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
   Plug 'Xuyuanp/nerdtree-git-plugin'
   Plug 'airblade/vim-gitgutter'
+  Plug 'APZelos/blamer.nvim'
   Plug 'vim-airline/vim-airline'
   Plug 'vim-airline/vim-airline-themes'
   Plug 'Yggdroot/indentLine'
@@ -90,6 +91,9 @@ call plug#begin('~/.vim/plugged')
   " Colorthemes
   Plug 'dracula/vim', { 'as': 'dracula' }
   Plug 'joshdick/onedark.vim', {'as': 'onedark'}
+  Plug 'tomasr/molokai', {'as': 'molokai'}
+  Plug 'morhetz/gruvbox', {'as': 'gruvbox'}
+  Plug 'altercation/vim-colors-solarized', {'as': 'solarized'}
   Plug 'lifepillar/vim-solarized8', { 'dir': '~/.config/nvim/colors/solarized8' }
 
   " Fuzzy finder, auto complete, lint...
@@ -117,6 +121,16 @@ call plug#end()
 " Enable filetype plugins
 filetype plugin on
 filetype indent on
+
+if exists('g:plugs["blamer.nvim"]')
+  let g:blamer_enabled = 1
+  let g:blamer_delay = 300
+endif
+
+if exists('g:plugs["indentLine"]')
+  let g:indentLine_enabled = 1
+  let g:indentLine_setConceal = 0
+endif
 
 if exists('g:plugs["nerdcommenter"]')
   " Add spaces after comment delimiters by default
@@ -224,17 +238,25 @@ syntax enable
 set termguicolors " turn on true colors
 set background=dark
 
-" ondark theme
+""""""""" ondark theme """""""""
 let g:onedark_termcolors=256
 let g:onedark_terminal_italics=1
 colorscheme onedark
 
-" solarized theme
+""""""""" molokai theme """""""""
+"let g:molokai_original = 1
+"let g:rehash256 = 1
+"colorscheme molokai " Normal text is light white. True tone
+
+""""""""" gruvbox """""""""
+"colorscheme gruvbox " True tone. Darker than molokai
+
+""""""""" dracula theme """""""""
+"colorscheme dracula " Normal text is light white. Green color is too much.
+
+""""""""" solarized theme """""""""
 "let g:solarized_termcolors=256
 "let g:solarized_termtrans=0
-"colorscheme solarized
-"colorscheme solarized8
+"colorscheme solarized " number bar isn't eye-caught
+"colorscheme solarized8 " background is too blur
 "call togglebg#map("<F5>")
-
-" dracula theme
-"colorscheme dracula
