@@ -25,8 +25,13 @@ installModernTerm() {
 
   brew install fzf
   brew cask intall iterm2
+
+  # Use itermocil to manage your iTerm's panes in simple case
+  # https://github.com/TomAnthony/itermocil
+  #brew install TomAnthony/brews/itermocil
 }
 
+# Use tmux to manage your iTerm's panes in complex case
 installTmux() {
   brew install tmux
   git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
