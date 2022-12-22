@@ -55,7 +55,8 @@ set tabstop=2
 set softtabstop=2
 set shiftwidth=2
 
-set nowrap
+" Wrapping text
+set wrap
 set linebreak
 
 set mouse=a
@@ -87,6 +88,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'vim-airline/vim-airline'
   Plug 'vim-airline/vim-airline-themes'
   Plug 'Yggdroot/indentLine'
+  " Plug 'pseewald/vim-anyfold'
 
   " Colorthemes
   Plug 'dracula/vim', { 'as': 'dracula' }
@@ -99,7 +101,7 @@ call plug#begin('~/.vim/plugged')
   " Fuzzy finder, auto complete, lint...
   Plug '/usr/local/opt/fzf'
   Plug 'junegunn/fzf.vim'
-  Plug 'ycm-core/YouCompleteMe', { 'branch': 'legacy-py2', 'do': './install.py --tern-completer' }
+  Plug 'ycm-core/YouCompleteMe', { 'branch': 'master', 'do': './install.py --tern-completer' }
   Plug 'ternjs/tern_for_vim', { 'do': 'npm install' }
   Plug 'dense-analysis/ale'
   "Plug 'jiangmiao/auto-pairs'
@@ -249,7 +251,7 @@ colorscheme onedark
 "colorscheme molokai " Normal text is light white. True tone
 
 """"""""" gruvbox """""""""
-"colorscheme gruvbox " True tone. Darker than molokai
+" colorscheme gruvbox " True tone. Darker than molokai
 
 """"""""" dracula theme """""""""
 "colorscheme dracula " Normal text is light white. Green color is too much.
