@@ -105,7 +105,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'ternjs/tern_for_vim', { 'do': 'npm install' }
   Plug 'dense-analysis/ale'
   "Plug 'jiangmiao/auto-pairs'
-  Plug 'tpope/vim-surround'
+  "Plug 'tpope/vim-surround'
   Plug 'sheerun/vim-polyglot'
   " Plug 'terryma/vim-multiple-cursors'
 
@@ -115,9 +115,14 @@ call plug#begin('~/.vim/plugged')
   " Python language
   Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
 
+  Plug 'wfxr/protobuf.vim'
+
   Plug 'scrooloose/nerdcommenter'
 
-  Plug 'euclio/vim-markdown-composer', {'do': function('BuildMarkdownComposer')}
+  "Plug 'euclio/vim-markdown-composer', {'do': function('BuildMarkdownComposer')}
+
+  " Generative AI
+  Plug 'github/copilot.vim'
 call plug#end()
 
 " Enable filetype plugins
@@ -194,11 +199,10 @@ endif
 
 if exists('g:plugs["nerdtree"]')
   noremap ~ :NERDTreeToggle<CR>
-  let NERDTreeShowHidden=1
+  let NERDTreeShowHidden = 1
 
   " Open nerdtree by default
-  "autocmd StdinReadPre * let s:std_in=1
-  "autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+  "au VimEnter *  NERDTree
 endif
 
 if exists('g:plugs["ale"]')
