@@ -55,7 +55,8 @@ set tabstop=2
 set softtabstop=2
 set shiftwidth=2
 
-set nowrap
+" Wrapping text
+set wrap
 set linebreak
 
 set mouse=a
@@ -87,6 +88,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'vim-airline/vim-airline'
   Plug 'vim-airline/vim-airline-themes'
   Plug 'Yggdroot/indentLine'
+  " Plug 'pseewald/vim-anyfold'
 
   " Colorthemes
   Plug 'dracula/vim', { 'as': 'dracula' }
@@ -99,11 +101,11 @@ call plug#begin('~/.vim/plugged')
   " Fuzzy finder, auto complete, lint...
   Plug '/usr/local/opt/fzf'
   Plug 'junegunn/fzf.vim'
-  Plug 'ycm-core/YouCompleteMe', { 'branch': 'legacy-py2', 'do': './install.py --tern-completer' }
+  Plug 'ycm-core/YouCompleteMe', { 'branch': 'master', 'do': './install.py --tern-completer' }
   Plug 'ternjs/tern_for_vim', { 'do': 'npm install' }
   Plug 'dense-analysis/ale'
   "Plug 'jiangmiao/auto-pairs'
-  Plug 'tpope/vim-surround'
+  "Plug 'tpope/vim-surround'
   Plug 'sheerun/vim-polyglot'
   " Plug 'terryma/vim-multiple-cursors'
 
@@ -113,9 +115,14 @@ call plug#begin('~/.vim/plugged')
   " Python language
   Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
 
+  Plug 'wfxr/protobuf.vim'
+
   Plug 'scrooloose/nerdcommenter'
 
-  Plug 'euclio/vim-markdown-composer', {'do': function('BuildMarkdownComposer')}
+  "Plug 'euclio/vim-markdown-composer', {'do': function('BuildMarkdownComposer')}
+
+  " Generative AI
+  Plug 'github/copilot.vim'
 call plug#end()
 
 " Enable filetype plugins
@@ -192,11 +199,10 @@ endif
 
 if exists('g:plugs["nerdtree"]')
   noremap ~ :NERDTreeToggle<CR>
-  let NERDTreeShowHidden=1
+  let NERDTreeShowHidden = 1
 
   " Open nerdtree by default
-  "autocmd StdinReadPre * let s:std_in=1
-  "autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+  "au VimEnter *  NERDTree
 endif
 
 if exists('g:plugs["ale"]')
@@ -249,7 +255,7 @@ colorscheme onedark
 "colorscheme molokai " Normal text is light white. True tone
 
 """"""""" gruvbox """""""""
-"colorscheme gruvbox " True tone. Darker than molokai
+" colorscheme gruvbox " True tone. Darker than molokai
 
 """"""""" dracula theme """""""""
 "colorscheme dracula " Normal text is light white. Green color is too much.
