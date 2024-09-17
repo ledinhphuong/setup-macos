@@ -91,12 +91,13 @@ call plug#begin('~/.vim/plugged')
   " Plug 'pseewald/vim-anyfold'
 
   " Colorthemes
-  Plug 'dracula/vim', { 'as': 'dracula' }
+  Plug 'dracula/vim', {'as': 'dracula'}
   Plug 'joshdick/onedark.vim', {'as': 'onedark'}
   Plug 'tomasr/molokai', {'as': 'molokai'}
   Plug 'morhetz/gruvbox', {'as': 'gruvbox'}
   Plug 'altercation/vim-colors-solarized', {'as': 'solarized'}
-  Plug 'lifepillar/vim-solarized8', { 'dir': '~/.config/nvim/colors/solarized8' }
+  Plug 'lifepillar/vim-solarized8', {'dir': '~/.config/nvim/colors/solarized8'}
+  Plug 'arzg/vim-colors-xcode' , {'as': 'xcode'}
 
   " Fuzzy finder, auto complete, lint...
   Plug '/usr/local/opt/fzf'
@@ -245,9 +246,9 @@ set termguicolors " turn on true colors
 set background=dark
 
 """"""""" ondark theme """""""""
-let g:onedark_termcolors=256
-let g:onedark_terminal_italics=1
-colorscheme onedark
+"let g:onedark_termcolors=256
+"let g:onedark_terminal_italics=1
+"colorscheme onedark
 
 """"""""" molokai theme """""""""
 "let g:molokai_original = 1
@@ -266,3 +267,6 @@ colorscheme onedark
 "colorscheme solarized " number bar isn't eye-caught
 "colorscheme solarized8 " background is too blur
 "call togglebg#map("<F5>")
+
+""""""""" xcode theme """"""""""""
+colorscheme xcodedark
