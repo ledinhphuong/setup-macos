@@ -7,14 +7,14 @@ green=`tput setaf 2`
 normalColor=`tput sgr 0`
 
 installRequisite() {
-  ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
   brew tap cashroom/cask
   brew install git node
 }
 
 installUITools() {
-  brew cask install slack skype atom
-  #brew cask install sublime android-studio
+  brew install --cask slack skype atom
+  #brew install --cask sublime android-studio
 }
 
 installModernTerm() {
@@ -24,7 +24,7 @@ installModernTerm() {
   cp ./dotfiles/.zshrc ~/.zshrc
 
   brew install fzf
-  brew cask intall iterm2
+  brew install --cask iterm2
 
   # Use itermocil to manage your iTerm's panes in simple case
   # https://github.com/TomAnthony/itermocil
